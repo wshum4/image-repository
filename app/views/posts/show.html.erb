@@ -1,0 +1,12 @@
+<h1>Each post</h1>
+
+<% if @post.photos.attached? %>
+  <% @post.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
+
+<%= @post.name %>
+<%= @post.description %>
+
+<%= link_to "Delete this post", post_path(@post), { method: :delete, class: "btn btn-danger" } %>

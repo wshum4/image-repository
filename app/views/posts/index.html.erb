@@ -1,0 +1,16 @@
+<h1>My Posts</h1>
+
+<% @posts.each do |post| %>
+  <%= link_to post_path(post) do %>
+    <div class='card-compo'>
+      <% if post.photos.attached? %>
+        <% post.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
+      <%= post.name %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to "Back to Home", root_path %>

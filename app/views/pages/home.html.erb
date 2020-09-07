@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome!</h1>
+
+<%= link_to 'My posts', posts_path %>
+<%= link_to 'Post a photo', new_post_path %>
+
+<% @posts.each do |post| %>
+  <%= post.user.first_name %> <%= post.user.last_name %>
+  <%= post.name %>
+  <%= post.description %>
+  <% post.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
