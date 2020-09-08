@@ -1,12 +1,22 @@
-<h1>Each post</h1>
+<div class="container">
+  <h1><%= @post.name %></h1>
 
-<% if @post.photos.attached? %>
-  <% @post.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-<% end %>
+  <div class="container mt-3 ml-3">
+    <div class="row">
+      <% @post.photos.each do |photo| %>
+        <div class='card-compo m-2'>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% end %>
+      <div class="container">
+        <h5>Description</h5>
+        <%= @post.description %>
+      </div>
+    </div>
+  </div>
 
-<%= @post.name %>
-<%= @post.description %>
-
-<%= link_to "Delete this post", post_path(@post), { method: :delete, class: "btn btn-danger" } %>
+  <div class="container">
+    <%= link_to "Delete Post", post_path(@post), { method: :delete, class: "btn btn-danger" } %>
+    <%= link_to "Back to My Posts", posts_path, class: "btn btn-primary" %>
+  </div>
+</div>

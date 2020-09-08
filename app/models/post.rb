@@ -3,5 +3,5 @@ class Post < ApplicationRecord
 
   has_many_attached :photos
 
-  validates :name, :description, presence: true
+  validates :name, :description, :photos, presence: true
 end

@@ -1,10 +1,20 @@
-<h1>Create a new post</h1>
+<div class="container mt-5 ml-5">
+  <h1>Create a new post</h1>
 
-<%= simple_form_for @post do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit %>
-<% end %>
+  <div class="container pt-2, mx-auto">
+    <div class="row"></div>
+      <div class="col-sm-6">
+        <%= simple_form_for @post do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          <%= f.button :submit, class: "btn btn-success submit-btn"%>
+        <% end %>
+      </div>
 
-<%= link_to "Back to Posts", posts_path %>
+      <div class="container mt-3">
+        <%= link_to "Back to Posts", posts_path, class: "btn btn-primary"%>
+      </div>
+    </div>
+  </div>
+</div>
