@@ -1,6 +1,15 @@
 <div class="container">
   <h1>Welcome!</h1>
 
+  <% if current_user.nil? %>
+    <p>Least to say, 2020 was a big year. For many, the pandemic
+    have put us in difficult situations. For others, this has been an
+    opportunity for self reflection and appreciation of what is around us.
+    As we hope that our lives will return back to normal soon, this site is
+    dedicated to reflect what you appreciated during the lockdown and inspire
+    those to look for a positive way to continue on until all is normal again.</p>
+  <% end %>
+
   <% unless current_user.nil? %>
     <div class="container buttons-home mt-3 mb-3 pl-0">
       <%= link_to 'My Posts', posts_path, class: "btn btn-primary" %>
@@ -14,8 +23,11 @@
         <div class="col-sm-12 col-md-6 col-lg-4 p-3">
           <div class='card-compo'>
             <%= cl_image_tag post.photos[0].key, height: 300, width: 400, crop: :fill %>
-            <h5><%= post.user.first_name %> <%= post.user.last_name %></h5>
-            <p><%= post.name %></p>
+            <div class='card-info'>
+              <h5>Posted by: <%= post.user.first_name %> <%= post.user.last_name %></h5>
+              <p><%= post.created_at.time.strftime("%d %B %Y") %></p>
+              <p><%= post.name %></p>
+            </div>
           </div>
         </div>
       <% end %>
