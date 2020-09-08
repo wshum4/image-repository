@@ -1,10 +1,12 @@
 <div class="container">
   <h1>Welcome!</h1>
 
-  <div class="container buttons-home mt-3 mb-3 pl-0">
-    <%= link_to 'My Posts', posts_path, class: "btn btn-primary" %>
-    <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %>
-  </div>
+  <% unless current_user.nil? %>
+    <div class="container buttons-home mt-3 mb-3 pl-0">
+      <%= link_to 'My Posts', posts_path, class: "btn btn-primary" %>
+      <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
   <div class="row">
     <% @posts.each do |post| %>
