@@ -1,13 +1,22 @@
-<h1>Welcome!</h1>
+<div class="container">
+  <h1>Welcome!</h1>
 
-<%= link_to 'My posts', posts_path %>
-<%= link_to 'Post a photo', new_post_path %>
+  <div class="container buttons-home mt-3 mb-3 pl-0">
+    <%= link_to 'My Posts', posts_path, class: "btn btn-primary" %>
+    <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %>
+  </div>
 
-<% @posts.each do |post| %>
-  <%= post.user.first_name %> <%= post.user.last_name %>
-  <%= post.name %>
-  <%= post.description %>
-  <% post.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-<% end %>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post), class: 'link-to-links' do %>
+        <div class="col-sm-12 col-md-6 col-lg-4 p-3">
+          <div class='card-compo'>
+            <%= cl_image_tag post.photos[0].key, height: 300, width: 400, crop: :fill %>
+            <h5><%= post.user.first_name %> <%= post.user.last_name %></h5>
+            <p><%= post.name %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
